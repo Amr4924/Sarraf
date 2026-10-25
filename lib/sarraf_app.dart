@@ -15,6 +15,7 @@ class SarrafApp extends StatelessWidget {
         title: 'Sarraf App',
         darkTheme: AppTheme.darkTheme,
         theme: AppTheme.lightTheme,
+        themeMode: ThemeMode.dark,
       ),
     );
   }
