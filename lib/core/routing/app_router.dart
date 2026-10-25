@@ -1,0 +1,27 @@
+import 'package:flutter/material.dart';
+import 'package:sarraf/core/routing/routes.dart';
+import 'package:sarraf/feature/home/ui/home_screen.dart';
+
+class AppRouter {
+  Route<dynamic> generateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case Routes.homeScreen:
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
+      case Routes.settingsScreen:
+        return MaterialPageRoute(builder: (_) => const Placeholder());
+      default:
+        return MaterialPageRoute(
+          builder: (_) {
+            return Scaffold(
+              body: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [Text("No Routes defined for ${settings.name}")],
+                ),
+              ),
+            );
+          },
+        );
+    }
+  }
+}
