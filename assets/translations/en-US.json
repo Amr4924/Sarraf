@@ -1,0 +1,18 @@
+{
+    "title-home-screen": "Sarraf",
+    "title-settings-screen": "Settings",
+    "description-title-home-screen": "Live exchange rates",
+    "appearance-title": "Appearance",
+    "appearance-description": "Choose how the app looks",
+    "theme-light": "Light",
+    "theme-dark": "Dark",
+    "language-title": "Language",
+    "language-description": "Choose the app language",
+    "language-english": "English",
+    "language-arabic": "Arabic",
+    "language-default": "Default",
+    "currency-from": "From",
+    "currency-to": "To",
+    "app-title": "Sarraf App",
+    "no-route-defined": "No route defined for {}"
+}

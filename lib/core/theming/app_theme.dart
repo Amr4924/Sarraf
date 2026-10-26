@@ -13,7 +13,12 @@ class AppTheme {
       surface: AppColors.light.surface,
       primary: AppColors.light.brandPrimary,
       onPrimary: AppColors.light.brandOnPrimary,
+      onSurface: AppColors.light.textPrimary,
+      onSurfaceVariant: AppColors.light.textSecondary,
+      outline: AppColors.light.borderDefault,
+      primaryContainer: AppColors.light.brandTint,
     ),
+    dividerColor: AppColors.light.borderDefault,
   );
 
   static final ThemeData darkTheme = ThemeData(
@@ -25,6 +30,11 @@ class AppTheme {
       surface: AppColors.dark.surface,
       primary: AppColors.dark.brandPrimary,
       onPrimary: AppColors.dark.brandOnPrimary,
+      onSurface: AppColors.dark.textPrimary,
+      onSurfaceVariant: AppColors.dark.textSecondary,
+      outline: AppColors.dark.borderDefault,
+      primaryContainer: AppColors.dark.brandTint,
     ),
+    dividerColor: AppColors.dark.borderDefault,
   );
 }

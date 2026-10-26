@@ -1,0 +1,18 @@
+{
+    "title-home-screen": "صراف",
+    "title-settings-screen": "الإعدادات",
+    "description-title-home-screen": "أسعار الصرف المباشرة",
+    "appearance-title": "المظهر",
+    "appearance-description": "اختر شكل التطبيق",
+    "theme-light": "الوضع الفاتح",
+    "theme-dark": "الوضع الداكن",
+    "language-title": "اللغة",
+    "language-description": "اختر لغة التطبيق",
+    "language-english": "الإنجليزية",
+    "language-arabic": "العربية",
+    "language-default": "الافتراضية",
+    "currency-from": "من",
+    "currency-to": "إلى",
+    "app-title": "تطبيق صراف",
+    "no-route-defined": "لا يوجد مسار معرف لـ {}"
+}
