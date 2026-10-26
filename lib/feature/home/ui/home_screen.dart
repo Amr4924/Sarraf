@@ -10,16 +10,18 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 24.w),
-            child: Column(children: [
-              const CustomHomeBar(),
-              verticalSpacing(20),
-              const FieldContainer(),
-            ],
-          ),
+            child: Column(
+              children: [
+                const CustomHomeBar(),
+                verticalSpacing(20),
+                const FieldContainer(),
+              ],
+            ),
           ),
         ),
       ),
