@@ -38,4 +38,10 @@ class TextStyles {
         fontWeight: TextWeightHelper.semiBold,
         color: Theme.of(context).colorScheme.onSurface,
       );
+  static TextStyle font15TextPrimarySemiBold(BuildContext context) =>
+      GoogleFonts.cairo(
+        fontSize: 15.sp,
+        fontWeight: TextWeightHelper.semiBold,
+        color: Theme.of(context).colorScheme.onSurface,
+      );
 }

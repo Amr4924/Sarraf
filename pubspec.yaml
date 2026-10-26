@@ -33,7 +33,7 @@ dependencies:
     sdk: flutter
 
   # State Managment
-  bloc: ^9.2.1
+
   # Network
   dio: ^5.11.1
   # Responsive Ui
@@ -42,6 +42,9 @@ dependencies:
   flutter_native_splash: ^2.4.8
   google_fonts: ^9.0.0
   easy_localization: ^3.0.8
+  bloc: ^9.2.1
+  flutter_bloc: ^9.1.1
+  flutter_svg: ^2.3.0
 
 dev_dependencies:
   flutter_lints: ^6.0.0

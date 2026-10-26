@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:sarraf/core/helpers/spacing.dart';
 import 'package:sarraf/core/theming/style.dart';
@@ -28,6 +29,7 @@ class _FieldContainerState extends State<FieldContainer> {
         Column(
           children: [
             AppField(
+              autofocus: false,
               nameCurrency: nameCurrencyFrom,
               selectedCurrency: selectedCurrencyFrom,
               symbol: symbolFrom,
@@ -67,6 +69,7 @@ class _FieldContainerState extends State<FieldContainer> {
             verticalSpacing(8),
             AppField(
               color: Theme.of(context).colorScheme.outline,
+              title: "currency-to".tr(),
               nameCurrency: nameCurrencyTo,
               selectedCurrency: selectedCurrencyTo,
               symbol: symbolTo,
@@ -123,7 +126,6 @@ class _FieldContainerState extends State<FieldContainer> {
                 icon: Icon(
                   Icons.swap_vert,
                   color: Theme.of(context).colorScheme.onPrimary,
-                  weight: 22.w,
                 ),
               ),
             ),
