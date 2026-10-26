@@ -14,5 +14,6 @@
     "currency-from": "من",
     "currency-to": "إلى",
     "app-title": "تطبيق صراف",
-    "no-route-defined": "لا يوجد مسار معرف لـ {}"
+    "no-route-defined": "لا يوجد مسار معرف لـ {}",
+    "updated-just-now": "تم التحديث الآن"
 }
