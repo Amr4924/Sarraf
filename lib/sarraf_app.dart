@@ -25,7 +25,7 @@ class SarrafApp extends StatelessWidget {
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: context.locale,
-            title: 'Sarraf App',
+            title: 'app-title'.tr(),
             darkTheme: AppTheme.darkTheme,
             theme: AppTheme.lightTheme,
             themeMode: state.themeMode,
