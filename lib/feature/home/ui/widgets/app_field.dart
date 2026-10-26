@@ -90,7 +90,7 @@ class AppField extends StatelessWidget {
                     child:
                         widget ??
                         TextField(
-                          autofocus: autofocus ?? true,
+                          autofocus: autofocus ?? false,
                           controller: controller,
                           textAlign: TextAlign.right,
                           keyboardType: TextInputType.number,
@@ -100,6 +100,7 @@ class AppField extends StatelessWidget {
                           ),
                           decoration: const InputDecoration(
                             border: InputBorder.none,
+                            hintText: "0.0",
                             isDense: true,
                             contentPadding: EdgeInsets.zero,
                           ),

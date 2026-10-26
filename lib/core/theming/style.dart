@@ -7,7 +7,7 @@ class TextStyles {
   static TextStyle font32PrimaryBold(BuildContext context) => GoogleFonts.cairo(
     fontSize: 32.sp,
     fontWeight: TextWeightHelper.bold,
-    color: Theme.of(context).colorScheme.onSurface,
+    color: Theme.of(context).colorScheme.primary,
   );
   static TextStyle font24PrimaryBold(BuildContext context) => GoogleFonts.cairo(
     fontSize: 24.sp,
