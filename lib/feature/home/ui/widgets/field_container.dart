@@ -234,7 +234,7 @@ class _FieldContainerState extends State<FieldContainer> {
                     style: TextStyles.font15TextPrimarySemiBold(context),
                   ),
                   TextSpan(
-                    text: "     Updated just now",
+                    text: "     ${"updated-just-now".tr()}",
                     style: TextStyles.font12ScondaryRegular(context),
                   ),
                 ],
