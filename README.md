@@ -1,19 +1,36 @@
 <div align="center">
 
-  <img src="assets/images/splash_screen_light.png" alt="Sarraf splash screen" width="220">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/images/splash_screen_dark.png">
+  <img src="assets/images/splash_screen_light.png" alt="Sarraf launch screen" width="200">
+</picture>
 
-  # Sarraf
+# Sarraf | صرّاف
 
-  ### A modern, bilingual currency converter built with Flutter
+**A fast, bilingual currency converter for Android and iOS, built with Flutter.**
 
-  Convert currencies in seconds with live exchange rates, a clean interface, and light and dark themes.
+Live exchange rates &nbsp;·&nbsp; English & Arabic &nbsp;·&nbsp; Light & dark themes
 
-  <p>
-    <img src="https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter&logoColor=white" alt="Flutter">
-    <img src="https://img.shields.io/badge/Dart-3.13%2B-0175C2?logo=dart&logoColor=white" alt="Dart">
-    <img src="https://img.shields.io/badge/Platforms-Android%20%7C%20iOS-0A7D61" alt="Platforms">
-    <img src="https://img.shields.io/badge/License-Private-lightgrey" alt="License">
-  </p>
+<p>
+  <a href="https://flutter.dev"><img src="https://img.shields.io/badge/Flutter-3.x-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter"></a>
+  <a href="https://dart.dev"><img src="https://img.shields.io/badge/Dart-3.13%2B-0175C2?style=for-the-badge&logo=dart&logoColor=white" alt="Dart"></a>
+  <img src="https://img.shields.io/badge/Platforms-Android%20%7C%20iOS-0A7D61?style=for-the-badge" alt="Platforms: Android and iOS">
+  <img src="https://img.shields.io/badge/Languages-EN%20%7C%20AR-7C3AED?style=for-the-badge" alt="Languages: English and Arabic">
+  <img src="https://img.shields.io/badge/License-Proprietary-lightgrey?style=for-the-badge" alt="License: Proprietary">
+</p>
+
+**English** &nbsp;|&nbsp; [العربية](README.ar.md)
+
+<sub>
+<a href="#overview">Overview</a> ·
+<a href="#features">Features</a> ·
+<a href="#screenshots">Screenshots</a> ·
+<a href="#tech-stack">Tech Stack</a> ·
+<a href="#architecture">Architecture</a> ·
+<a href="#getting-started">Getting Started</a> ·
+<a href="#roadmap">Roadmap</a> ·
+<a href="#copyright-and-usage-restrictions">License</a>
+</sub>
 
 </div>
 
@@ -21,131 +38,66 @@
 
 ## Overview
 
-Sarraf is a Flutter mobile application for converting between currencies using the
-[ExchangeRate-API](https://www.exchangerate-api.com/). The app provides a focused
-conversion flow: select the source and target currencies, enter an amount, and
-get the converted value using the latest available rates.
+**Sarraf** (Arabic for *money changer*) is a Flutter mobile app that converts between currencies using the [ExchangeRate-API](https://www.exchangerate-api.com/). It is built around one focused flow:
+
+1. Pick the source and target currencies.
+2. Enter an amount.
+3. Get the converted value, based on the latest available rates.
+
+The app is bilingual, with **English (`en-US`)** and **Arabic (`ar-EG`)**, and ships with light and dark themes. Language and theme can be changed from the Settings screen.
 
 ## Features
 
-- **Live exchange rates** loaded from ExchangeRate-API.
-- **Currency conversion** using the selected source and target currencies.
-- **Wide currency catalog** with currency names, codes, and symbols.
-- **Bilingual experience** with English (`en-US`) and Arabic (`ar-EG`) localization.
-- **Light and dark themes** with a settings screen for appearance preferences.
-- **Responsive layout** using `flutter_screenutil_plus`.
-- **Platform-ready branding** with custom Android and iOS app icons.
-- **Splash screen configuration** for light, dark, and Android 12+ launch experiences.
-- **Network logging in debug mode** through `pretty_dio_logger`.
+| | Feature | Details |
+|:-:|---|---|
+| 💱 | **Live exchange rates** | Latest rates fetched from ExchangeRate-API. |
+| 🔁 | **Instant conversion** | Choose a source and a target currency, enter an amount, get the result. |
+| 🪙 | **Wide currency catalog** | Currency names, codes, and symbols. |
+| 🌍 | **Bilingual UI** | English (`en-US`) and Arabic (`ar-EG`) via `easy_localization`. |
+| 🎨 | **Light & dark themes** | Appearance and language are controlled from a dedicated Settings screen. |
+| 📱 | **Responsive layout** | Adapts to different screen sizes with `flutter_screenutil_plus`. |
+| 🚀 | **Platform-ready branding** | Custom Android and iOS app icons; light, dark, and Android 12+ launch screens. |
+| 🛠️ | **Developer-friendly** | Network request logging in debug mode with `pretty_dio_logger`. |
 
-## Branding
+## Screenshots
+
+<div align="center">
 
 | Light launch screen | Dark launch screen |
 |:---:|:---:|
-| <img src="assets/images/splash_screen_light.png" alt="Light launch screen" width="180"> | <img src="assets/images/splash_screen_dark.png" alt="Dark launch screen" width="180"> |
+| <img src="assets/images/splash_screen_light.png" alt="Light launch screen" width="200"> | <img src="assets/images/splash_screen_dark.png" alt="Dark launch screen" width="200"> |
 
-> Product screenshots can be added here as the UI evolves.
+</div>
+
+<!--
+App screens: add real screenshots to docs/screenshots/ and uncomment this block.
+
+<div align="center">
+
+| Converter (EN) | Converter (AR) | Dark theme | Settings |
+|:-:|:-:|:-:|:-:|
+| <img src="docs/screenshots/converter-en.png" alt="Converter, English" width="180"> | <img src="docs/screenshots/converter-ar.png" alt="Converter, Arabic" width="180"> | <img src="docs/screenshots/converter-dark.png" alt="Converter, dark theme" width="180"> | <img src="docs/screenshots/settings.png" alt="Settings screen" width="180"> |
+
+</div>
+-->
 
 ## Tech Stack
 
-| Area | Technology |
-|---|---|
-| Framework | Flutter |
-| Language | Dart |
-| HTTP client | Dio |
-| API | ExchangeRate-API |
-| State and theme | `flutter_bloc` / `bloc` |
-| Localization | `easy_localization` |
-| Responsive UI | `flutter_screenutil_plus` |
-| SVG rendering | `flutter_svg` |
-| Logging | `pretty_dio_logger` |
+| Area | Technology | Used for |
+|---|---|---|
+| Framework | Flutter | Cross-platform UI for Android and iOS |
+| Language | Dart | Application logic |
+| Networking | Dio, `pretty_dio_logger` | HTTP client, and request logging in debug mode |
+| Data source | ExchangeRate-API (v6) | Latest exchange rates |
+| State & theming | `flutter_bloc` / `bloc` | State management, including theme state in the settings feature |
+| Localization | `easy_localization` | English (`en-US`) and Arabic (`ar-EG`) strings |
+| Responsive UI | `flutter_screenutil_plus` | Screen-adaptive sizing |
+| Graphics | `flutter_svg` | Rendering SVG assets |
+| Launch screens | `flutter_native_splash` | Light, dark, and Android 12+ splash configuration |
 
-## Requirements
+## Architecture
 
-- Flutter SDK compatible with Dart `3.13.1` or later within the declared SDK range.
-- Android Studio and an Android SDK for Android builds.
-- Xcode and CocoaPods for iOS development on macOS.
-- A valid ExchangeRate-API key.
-
-Check your local Flutter installation with:
-
-```bash
-flutter doctor
-```
-
-## Getting Started
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/Amr4924/Sarraf.git
-cd Sarraf
-```
-
-### 2. Install dependencies
-
-```bash
-flutter pub get
-```
-
-### 3. Configure the API
-
-The API base URL is defined in:
-
-```text
-lib/core/constants/api_constants.dart
-```
-
-The current endpoint uses the `latest/USD` route. Replace the API key with your
-own key before distributing the application.
-
-> **Security note:** API keys embedded in a mobile application can be extracted
-> from a built APK or IPA. For production, restrict the key in the provider
-> dashboard or proxy requests through a secure backend. Do not commit private
-> or unrestricted credentials.
-
-### 4. Run the application
-
-```bash
-flutter run
-```
-
-To run on a specific device:
-
-```bash
-flutter devices
-flutter run -d <device-id>
-```
-
-## Build
-
-### Android release
-
-The Android release manifest includes the Internet permission required by the
-exchange-rate API:
-
-```bash
-flutter build apk --release
-```
-
-The generated APK is placed at:
-
-```text
-build/app/outputs/flutter-apk/app-release.apk
-```
-
-### iOS release
-
-On macOS:
-
-```bash
-flutter build ios --release
-```
-
-Before publishing to the App Store, configure signing, bundle identifiers,
-certificates, and provisioning profiles in Xcode.
-
-## Project Structure
+Sarraf uses a feature-based structure: shared infrastructure lives in `core/`, and each feature owns its data, services, logic, and UI.
 
 ```text
 lib/
@@ -172,12 +124,15 @@ assets/
 └── translations/             # English and Arabic localization files
 ```
 
-## API Flow
+### Data flow
 
-1. `ApiManager` creates the Dio client with the configured base URL.
-2. `HomeServices` requests the latest rates for the selected base currency.
-3. `CurrencyRatesModel` parses the API response.
-4. The home screen converts the entered amount using the selected currencies.
+```mermaid
+flowchart LR
+    A["ApiManager<br/>Dio client + base URL"] --> B["HomeServices<br/>requests the latest rates"]
+    B -->|HTTPS GET| X[("ExchangeRate-API")]
+    X -->|JSON response| C["CurrencyRatesModel<br/>parses the response"]
+    C --> D["Home screen<br/>converts the entered amount"]
+```
 
 The default request is equivalent to:
 
@@ -185,61 +140,112 @@ The default request is equivalent to:
 GET https://v6.exchangerate-api.com/v6/<API_KEY>/latest/USD
 ```
 
+## Getting Started
+
+### Prerequisites
+
+- Flutter SDK with Dart `3.13.1` or later (check the exact constraint in `pubspec.yaml`).
+- Android Studio with the Android SDK, for Android builds.
+- Xcode and CocoaPods, for iOS builds (macOS only).
+- A valid [ExchangeRate-API](https://www.exchangerate-api.com/) key.
+
+Check your local Flutter installation:
+
+```bash
+flutter doctor
+```
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Amr4924/Sarraf.git
+cd Sarraf
+```
+
+### 2. Install dependencies
+
+```bash
+flutter pub get
+```
+
+### 3. Configure the API
+
+The API configuration lives in:
+
+```text
+lib/core/constants/api_constants.dart
+```
+
+The current endpoint uses the `latest/USD` route. Replace the API key with your own before distributing the app.
+
+> [!WARNING]
+> API keys embedded in a mobile app can be extracted from a built APK or IPA. For production, restrict the key in the provider dashboard or proxy requests through a secure backend. Never commit private or unrestricted credentials.
+
+### 4. Run the app
+
+```bash
+flutter run                    # run on the default device
+flutter devices                # list connected devices
+flutter run -d <device-id>     # run on a specific device
+```
+
+## Build
+
+| Platform | Command | Notes |
+|---|---|---|
+| Android | `flutter build apk --release` | Output: `build/app/outputs/flutter-apk/app-release.apk`. The release manifest already includes the Internet permission required by the exchange-rate API. |
+| iOS | `flutter build ios --release` | macOS only. Before publishing to the App Store, configure signing, bundle identifiers, certificates, and provisioning profiles in Xcode. |
+
 ## Quality Checks
 
-Run static analysis:
-
 ```bash
-flutter analyze
-```
-
-Run the test suite:
-
-```bash
-flutter test
-```
-
-Format Dart files before opening a pull request:
-
-```bash
-dart format .
+dart format .        # format Dart files
+flutter analyze      # static analysis
+flutter test         # run the test suite
 ```
 
 ## Localization
 
-Translations are stored in:
+Translations live in:
 
 ```text
 assets/translations/en-US.json
 assets/translations/ar-EG.json
 ```
 
-When adding a new localized string:
+To add a new localized string:
 
-1. Add the key to both translation files.
+1. Add the key to **both** translation files.
 2. Use the same key in the widget with `tr(...)`.
 3. Verify both locales from the Settings screen.
 
-## Contributing
-
-1. Create a focused feature branch:
-
-   ```bash
-   git switch -c feature/<short-description>
-   ```
-
-2. Keep changes scoped and follow the existing feature-based structure.
-3. Run `dart format .`, `flutter analyze`, and relevant tests.
-4. Write a clear commit message describing the user-facing change.
-5. Open a pull request with validation steps and screenshots for UI changes.
-
 ## Roadmap
 
-- Add a user-facing loading, empty, and error state for rate requests.
-- Move API credentials to a safer runtime configuration or backend proxy.
-- Add automated unit tests for response parsing and conversion calculations.
-- Add widget tests for currency selection, input validation, and theme changes.
-- Add offline caching for the most recently fetched rates.
+**Done**
+
+- [x] Live exchange rates from ExchangeRate-API
+- [x] Conversion between the selected currencies
+- [x] English and Arabic localization
+- [x] Light and dark themes with a Settings screen
+- [x] Android and iOS app icons and launch screens
+
+**Next**
+
+- [ ] Loading, empty, and error states for rate requests
+- [ ] Move API credentials to a safer runtime configuration or a backend proxy
+- [ ] Unit tests for response parsing and conversion calculations
+- [ ] Widget tests for currency selection, input validation, and theme changes
+- [ ] Offline caching for the most recently fetched rates
+
+## Development Workflow
+
+> This repository is proprietary. See [Copyright and Usage Restrictions](#copyright-and-usage-restrictions) before sharing or reusing any part of it.
+
+1. Create a focused feature branch: `git switch -c feature/<short-description>`
+2. Keep changes scoped and follow the existing feature-based structure.
+3. Run `dart format .`, `flutter analyze`, and the relevant tests.
+4. Write a clear commit message describing the user-facing change.
+5. Open a pull request with validation steps and screenshots for UI changes.
 
 ## Copyright and Usage Restrictions
 
@@ -268,13 +274,13 @@ For any commercial use, redistribution, partnership, licensing request, or other
 permission, contact the copyright holder and obtain explicit written approval
 before using the project:
 
-**Copyright holder:** Amr Saad
-**Permission required:** Yes, for any commercial use or redistribution
+- **Copyright holder:** Amr Saad ([@Amr4924](https://github.com/Amr4924))
+- **Permission required:** Yes, for any commercial use or redistribution
 
 No rights are granted except those explicitly stated above.
 
 ---
 
 <div align="center">
-  Built with Flutter for fast, simple currency conversion.
+  <sub>Built with Flutter for fast, simple currency conversion.</sub>
 </div>
