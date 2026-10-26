@@ -1,10 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
+import 'package:sarraf/core/routing/routes.dart';
 import 'package:sarraf/core/theming/style.dart';
 
-class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
+class CustomHomeBar extends StatelessWidget {
+  const CustomHomeBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,9 @@ class CustomAppBar extends StatelessWidget {
           backgroundColor: Theme.of(context).colorScheme.surface,
           radius: 22.r,
           child: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, Routes.settingsScreen);
+            },
             icon: Icon(
               Icons.settings,
               color: Theme.of(context).colorScheme.onSurfaceVariant,
