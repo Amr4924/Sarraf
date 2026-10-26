@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
@@ -217,6 +218,8 @@ class _FieldContainerState extends State<FieldContainer> {
               borderRadius: BorderRadius.circular(999.r),
             ),
             child: RichText(
+              textDirection: ui.TextDirection.ltr,
+              textAlign: TextAlign.center,
               text: TextSpan(
                 children: [
                   TextSpan(
