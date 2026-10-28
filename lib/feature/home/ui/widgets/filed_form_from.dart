@@ -8,12 +8,14 @@ class FieldFormFrom extends StatefulWidget {
   String nameCurrencyFrom;
   String selectedCurrencyFrom;
   String symbolFrom;
+  final ValueChanged<CurrenciesModel> onCurrencyChanged;
   FieldFormFrom({
     super.key,
     required this.amount,
     required this.selectedCurrencyFrom,
     required this.nameCurrencyFrom,
     required this.symbolFrom,
+    required this.onCurrencyChanged,
   });
 
   @override
@@ -50,6 +52,7 @@ class _FieldFormFromState extends State<FieldFormFrom> {
                         widget.nameCurrencyFrom = currencies.nameCurrencies;
                         widget.symbolFrom = currencies.symbol;
                       });
+                      widget.onCurrencyChanged(currencies);
                       Navigator.pop(context);
                     },
                   );
