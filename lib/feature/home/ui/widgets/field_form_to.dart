@@ -12,6 +12,7 @@ class FieldFormTo extends StatefulWidget {
   String selectedCurrencyTo;
   String symbolTo;
   double result;
+  final ValueChanged<CurrenciesModel> onCurrencyChanged;
 
   FieldFormTo({
     super.key,
@@ -19,6 +20,7 @@ class FieldFormTo extends StatefulWidget {
     required this.selectedCurrencyTo,
     required this.symbolTo,
     required this.result,
+    required this.onCurrencyChanged,
   });
 
   @override
@@ -62,6 +64,7 @@ class _FieldFormToState extends State<FieldFormTo> {
                         widget.nameCurrencyTo = currencies.nameCurrencies;
                         widget.symbolTo = currencies.symbol;
                       });
+                      widget.onCurrencyChanged(currencies);
                       Navigator.pop(context);
                     },
                   );

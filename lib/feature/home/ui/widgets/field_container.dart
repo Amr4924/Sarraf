@@ -97,6 +97,13 @@ class _FieldContainerState extends State<FieldContainer> {
                   selectedCurrencyFrom: selectedCurrencyFrom,
                   nameCurrencyFrom: nameCurrencyFrom,
                   symbolFrom: symbolFrom,
+                  onCurrencyChanged: (currency) {
+                    setState(() {
+                      selectedCurrencyFrom = currency.code;
+                      nameCurrencyFrom = currency.nameCurrencies;
+                      symbolFrom = currency.symbol;
+                    });
+                  },
                 ),
                 verticalSpacing(8),
                 FieldFormTo(
@@ -104,6 +111,13 @@ class _FieldContainerState extends State<FieldContainer> {
                   selectedCurrencyTo: selectedCurrencyTo,
                   symbolTo: symbolTo,
                   result: result,
+                  onCurrencyChanged: (currency) {
+                    setState(() {
+                      selectedCurrencyTo = currency.code;
+                      nameCurrencyTo = currency.nameCurrencies;
+                      symbolTo = currency.symbol;
+                    });
+                  },
                 ),
               ],
             ),
