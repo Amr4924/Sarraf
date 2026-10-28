@@ -11,6 +11,7 @@ class ThemeOption extends StatelessWidget {
   final ValueChanged<bool?> onChanged;
 
   const ThemeOption({
+    super.key,
     required this.assetPath,
     required this.icon,
     required this.label,
@@ -26,7 +27,7 @@ class ThemeOption extends StatelessWidget {
       height: 178.h,
       padding: EdgeInsets.all(8.w),
       decoration: BoxDecoration(
-        color: colorScheme.surface,
+        color: selected ? colorScheme.primaryContainer : colorScheme.surface,
         borderRadius: BorderRadius.circular(16.r),
         border: Border.all(
           color: selected ? colorScheme.primary : colorScheme.outline,
@@ -44,7 +45,13 @@ class ThemeOption extends StatelessWidget {
           ),
           Row(
             children: [
-              Icon(icon, size: 20.sp),
+              Icon(
+                icon,
+                size: 20.sp,
+                color: selected
+                    ? Theme.of(context).colorScheme.primary
+                    : Theme.of(context).colorScheme.onSurfaceVariant,
+              ),
               horizontalSpacing(6),
               Expanded(child: Text(label)),
               Transform.scale(
