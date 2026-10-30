@@ -15,5 +15,6 @@
     "currency-to": "To",
     "app-title": "Sarraf App",
     "no-route-defined": "No route defined for {}",
-    "updated-just-now": "Updated just now"
+    "updated-just-now": "Updated just now",
+    "coming-soon":"Coming soon!"
 }

@@ -14,6 +14,7 @@ class AppField extends StatelessWidget {
   final TextEditingController? controller;
   final bool? autofocus;
   final void Function()? onTap;
+  final void Function(String)? onChanged;
   const AppField({
     super.key,
     this.color,
@@ -25,6 +26,7 @@ class AppField extends StatelessWidget {
     this.controller,
     this.widget,
     this.autofocus,
+    this.onChanged,
   });
 
   @override
@@ -93,7 +95,10 @@ class AppField extends StatelessWidget {
                           autofocus: autofocus ?? false,
                           controller: controller,
                           textAlign: TextAlign.right,
-                          keyboardType: TextInputType.number,
+                          keyboardType: TextInputType.numberWithOptions(
+                            decimal: true,
+                          ),
+                          onChanged: onChanged,
                           style: const TextStyle(
                             fontSize: 28,
                             fontWeight: FontWeight.bold,

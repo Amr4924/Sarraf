@@ -11,6 +11,12 @@ class AppColors {
   final Color brandPrimary;
   final Color brandOnPrimary;
   final Color brandTint;
+  final Color goldBase;
+  final Color goldOnBase;
+  final Color goldTint;
+  final Color goldText;
+  final Color stateNegative;
+  final Color stateNegativeTint;
   const AppColors({
     required this.background,
     required this.surface,
@@ -22,6 +28,12 @@ class AppColors {
     required this.brandPrimary,
     required this.brandOnPrimary,
     required this.brandTint,
+    required this.goldBase,
+    required this.goldOnBase,
+    required this.goldTint,
+    required this.goldText,
+    required this.stateNegative,
+    required this.stateNegativeTint,
   });
 
   static final light = AppColors(
@@ -35,6 +47,12 @@ class AppColors {
     brandPrimary: Color(0xff0A7D61), //
     brandOnPrimary: Color(0xffFFFFFF), //
     brandTint: Color(0xffDDF1EA), //
+    goldBase: Color(0xffE0AE2F),
+    goldOnBase: Color(0xff2B1E00),
+    goldTint: Color(0xffFBF1D6),
+    goldText: Color(0xff8A5D00),
+    stateNegative: Color(0xffC93C3C),
+    stateNegativeTint: Color(0xffFBE4E4),
   );
 
   static final dark = AppColors(
@@ -48,5 +66,12 @@ class AppColors {
     brandPrimary: Color(0xff34D399), //
     brandOnPrimary: Color(0xff04261B), //
     brandTint: Color(0xff11332A), //
+
+    goldBase: Color(0xffF0C14B),
+    goldOnBase: Color(0xff2B1E00),
+    goldTint: Color(0xff2E2610),
+    goldText: Color(0xffF0C14B),
+    stateNegative: Color(0xffFF8A80),
+    stateNegativeTint: Color(0xff3A1A1A),
   );
 }
