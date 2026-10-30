@@ -3,7 +3,7 @@ import 'package:sarraf/core/theming/app_colors.dart';
 
 class AppTheme {
   AppColors colorsLight = AppColors.light;
-  AppColors colorsDark = AppColors.light;
+  AppColors colorsDark = AppColors.dark;
   static final ThemeData lightTheme = ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
@@ -11,11 +11,11 @@ class AppTheme {
     colorScheme: ColorScheme.light(
       brightness: Brightness.light,
       surface: AppColors.light.surface,
-      primary: AppColors.light.brandPrimary,
       onPrimary: AppColors.light.brandOnPrimary,
       onSurface: AppColors.light.textPrimary,
       onSurfaceVariant: AppColors.light.textSecondary,
       outline: AppColors.light.borderDefault,
+      primary: AppColors.light.brandPrimary,
       primaryContainer: AppColors.light.brandTint,
     ),
     dividerColor: AppColors.light.borderDefault,
@@ -28,11 +28,11 @@ class AppTheme {
     colorScheme: ColorScheme.dark(
       brightness: Brightness.dark,
       surface: AppColors.dark.surface,
-      primary: AppColors.dark.brandPrimary,
       onPrimary: AppColors.dark.brandOnPrimary,
       onSurface: AppColors.dark.textPrimary,
       onSurfaceVariant: AppColors.dark.textSecondary,
       outline: AppColors.dark.borderDefault,
+      primary: AppColors.dark.brandPrimary,
       primaryContainer: AppColors.dark.brandTint,
     ),
     dividerColor: AppColors.dark.borderDefault,

@@ -45,21 +45,40 @@ class _FieldContainerState extends State<FieldContainer> {
     }
   }
 
-  void convertRate() {
-    final rates = data;
+  void replace() {
+    String tempNameCurrencyFrom = nameCurrencyFrom;
+    String tempSelectedCurrencyFrom = selectedCurrencyFrom;
+    String tempSymbolFrom = symbolFrom;
     final amountValue = double.tryParse(amount.text);
-    if (rates == null || amountValue == null) {
-      return;
-    }
-
     setState(() {
-      result = rates.convert(
-        amountValue,
-        selectedCurrencyFrom,
-        selectedCurrencyTo,
-      );
+      nameCurrencyFrom = nameCurrencyTo;
+      selectedCurrencyFrom = selectedCurrencyTo;
+      symbolFrom = symbolTo;
+
+      nameCurrencyTo = tempNameCurrencyFrom;
+      selectedCurrencyTo = tempSelectedCurrencyFrom;
+      symbolTo = tempSymbolFrom;
+      result = amountValue == null || data == null
+          ? 0
+          : data!.convert(
+              amountValue,
+              selectedCurrencyFrom,
+              selectedCurrencyTo,
+            );
     });
-    debugPrint("$result");
+  }
+
+  void _updateResult() {
+    final amountValue = double.tryParse(amount.text);
+    setState(() {
+      result = amountValue == null || data == null
+          ? 0
+          : data!.convert(
+              amountValue,
+              selectedCurrencyFrom,
+              selectedCurrencyTo,
+            );
+    });
   }
 
   @override
@@ -93,6 +112,14 @@ class _FieldContainerState extends State<FieldContainer> {
             Column(
               children: [
                 FieldFormFrom(
+                  data: data,
+                  result: result,
+                  onResultyChanged: (value) {
+                    setState(() {
+                      result = value;
+                    });
+                  },
+                  selectedCurrencyTo: selectedCurrencyTo,
                   amount: amount,
                   selectedCurrencyFrom: selectedCurrencyFrom,
                   nameCurrencyFrom: nameCurrencyFrom,
@@ -102,6 +129,7 @@ class _FieldContainerState extends State<FieldContainer> {
                       selectedCurrencyFrom = currency.code;
                       nameCurrencyFrom = currency.nameCurrencies;
                       symbolFrom = currency.symbol;
+                      _updateResult();
                     });
                   },
                 ),
@@ -116,6 +144,7 @@ class _FieldContainerState extends State<FieldContainer> {
                       selectedCurrencyTo = currency.code;
                       nameCurrencyTo = currency.nameCurrencies;
                       symbolTo = currency.symbol;
+                      _updateResult();
                     });
                   },
                 ),
@@ -132,7 +161,7 @@ class _FieldContainerState extends State<FieldContainer> {
                   backgroundColor: Theme.of(context).colorScheme.primary,
                   child: IconButton(
                     onPressed: () {
-                      convertRate();
+                      replace();
                     },
                     icon: Icon(
                       Icons.swap_vert,
