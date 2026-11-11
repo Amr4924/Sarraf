@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
-import 'package:sarraf/core/Network/api_manager.dart';
+import 'package:sarraf/core/Network/ap_currencyi_rate_manager.dart';
 import 'package:sarraf/core/helpers/spacing.dart';
-import 'package:sarraf/feature/home/data/currencies_model.dart';
-import 'package:sarraf/feature/home/data/currency_rates_model.dart';
-import 'package:sarraf/feature/home/services/home_services.dart';
+import 'package:sarraf/feature/home/data/models/currencies_model.dart';
+import 'package:sarraf/feature/home/data/models/currency_rates_model.dart';
+import 'package:sarraf/feature/home/data/services/home_services.dart';
 import 'package:sarraf/feature/home/ui/widgets/field_form_to.dart';
 import 'package:sarraf/feature/home/ui/widgets/filed_form_from.dart';
 import 'package:sarraf/feature/home/ui/widgets/rate_info.dart';
@@ -26,7 +26,7 @@ class _FieldContainerState extends State<FieldContainer> {
   late String nameCurrencyTo;
   late String selectedCurrencyTo;
   late String symbolTo;
-  late ApiManager apiManager;
+  late ApiCurrencyRateManager apiManager;
   late HomeServices homeService;
   double result = 0.00;
   CurrencyRatesModel? data;
@@ -90,7 +90,7 @@ class _FieldContainerState extends State<FieldContainer> {
     nameCurrencyTo = currenciesList[1].nameCurrencies;
     selectedCurrencyTo = currenciesList[1].code;
     symbolTo = currenciesList[1].symbol;
-    apiManager = ApiManager();
+    apiManager = ApiCurrencyRateManager();
     homeService = HomeServices(apiManager);
     amount = TextEditingController();
     super.initState();
