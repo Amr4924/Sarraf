@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'dart:ui' as ui;
 import 'package:sarraf/core/theming/style.dart';
-import 'package:sarraf/feature/home/data/currency_rates_model.dart';
+import 'package:sarraf/feature/home/data/models/currency_rates_model.dart';
 
 class RateInfo extends StatelessWidget {
   final CurrencyRatesModel? data;

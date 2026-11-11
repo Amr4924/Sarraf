@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
-import 'package:sarraf/feature/home/data/currencies_model.dart';
-import 'package:sarraf/feature/home/data/currency_rates_model.dart';
+import 'package:sarraf/feature/home/data/models/currencies_model.dart';
+import 'package:sarraf/feature/home/data/models/currency_rates_model.dart';
 import 'package:sarraf/feature/home/ui/widgets/app_field.dart';
 
 class FieldFormFrom extends StatefulWidget {
