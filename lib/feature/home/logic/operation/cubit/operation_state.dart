@@ -1,5 +1,5 @@
-import 'package:sarraf/feature/home/data/currencies_model.dart';
-import 'package:sarraf/feature/home/data/currency_rates_model.dart';
+import 'package:sarraf/feature/home/data/models/currencies_model.dart';
+import 'package:sarraf/feature/home/data/models/currency_rates_model.dart';
 
 class OperationState {
   final double result;

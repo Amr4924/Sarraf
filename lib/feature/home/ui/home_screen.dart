@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
-import 'package:sarraf/core/Network/api_manager.dart';
+import 'package:sarraf/core/Network/ap_currencyi_rate_manager.dart';
 import 'package:sarraf/core/helpers/spacing.dart';
 import 'package:sarraf/feature/home/logic/currency_rates/cubit/currency_rate_cubit.dart';
 import 'package:sarraf/feature/home/logic/operation/cubit/operation_cubit.dart';
-import 'package:sarraf/feature/home/services/home_services.dart';
+import 'package:sarraf/feature/home/data/services/home_services.dart';
 import 'package:sarraf/feature/home/ui/widgets/custom_home_bar.dart';
 import 'package:sarraf/feature/home/ui/widgets/field_container.dart';
 
@@ -28,7 +28,9 @@ class HomeScreen extends StatelessWidget {
                   providers: [
                     BlocProvider(
                       create: (context) =>
-                          CurrencyRatesCubit(HomeServices(ApiManager())),
+                          CurrencyRatesCubit(
+                            HomeServices(ApiCurrencyRateManager()),
+                          ),
                     ),
                     BlocProvider(create: (context) => OperationCubit()),
                   ],
