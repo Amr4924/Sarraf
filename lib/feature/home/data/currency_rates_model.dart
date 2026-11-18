@@ -34,10 +34,4 @@ class CurrencyRatesModel {
       (k, v) => MapEntry(k, (v as num).toDouble()),
     );
   }
-
-  double convert(double amount, String from, String to) {
-    final fromRate = rates[from];
-    final toRate = rates[to];
-    return amount / fromRate * toRate;
-  }
 }

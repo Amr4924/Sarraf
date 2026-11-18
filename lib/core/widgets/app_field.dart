@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:sarraf/core/helpers/spacing.dart';
 import 'package:sarraf/core/theming/style.dart';
+import 'package:sarraf/feature/home/logic/operation/cubit/operation_cubit.dart';
 
 class AppField extends StatelessWidget {
   final Color? color;
@@ -14,7 +16,6 @@ class AppField extends StatelessWidget {
   final TextEditingController? controller;
   final bool? autofocus;
   final void Function()? onTap;
-  final void Function(String)? onChanged;
   const AppField({
     super.key,
     this.color,
@@ -26,7 +27,6 @@ class AppField extends StatelessWidget {
     this.controller,
     this.widget,
     this.autofocus,
-    this.onChanged,
   });
 
   @override
@@ -98,7 +98,11 @@ class AppField extends StatelessWidget {
                           keyboardType: TextInputType.numberWithOptions(
                             decimal: true,
                           ),
-                          onChanged: onChanged,
+                          onChanged: (value) {
+                            context.read<OperationCubit>().currenctyRateAccount(
+                              value,
+                            );
+                          },
                           style: const TextStyle(
                             fontSize: 28,
                             fontWeight: FontWeight.bold,

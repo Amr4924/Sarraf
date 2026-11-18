@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:sarraf/core/routing/routes.dart';
-import 'package:sarraf/feature/gold_tracking/ui/gold_tracking_screen.dart';
+import 'package:sarraf/feature/gold/ui/gold_tracking_screen.dart';
 import 'package:sarraf/feature/home/ui/home_screen.dart';
 import 'package:sarraf/feature/settings/ui/settings_screen.dart';
 

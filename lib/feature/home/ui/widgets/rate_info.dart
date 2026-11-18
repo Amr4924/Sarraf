@@ -1,19 +1,22 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
+
 import 'dart:ui' as ui;
+
 import 'package:sarraf/core/theming/style.dart';
-import 'package:sarraf/feature/home/data/currency_rates_model.dart';
 
 class RateInfo extends StatelessWidget {
-  final CurrencyRatesModel? data;
   final String selectedCurrencyTo;
   final String selectedCurrencyFrom;
+  final bool isLoding;
+  final double rates;
   const RateInfo({
     super.key,
-    this.data,
     required this.selectedCurrencyTo,
     required this.selectedCurrencyFrom,
+    required this.isLoding,
+    required this.rates,
   });
   @override
   Widget build(BuildContext context) {
@@ -32,17 +35,25 @@ class RateInfo extends StatelessWidget {
           text: TextSpan(
             children: [
               TextSpan(
-                text: "1 ",
+                text: "1 $selectedCurrencyFrom = ",
                 style: TextStyles.font15TextPrimarySemiBold(context),
               ),
+              if (isLoding)
+                WidgetSpan(
+                  alignment: PlaceholderAlignment.middle,
+                  child: SizedBox(
+                    width: 14.w,
+                    height: 14.h,
+                    child: CircularProgressIndicator(),
+                  ),
+                )
+              else
+                TextSpan(
+                  text: " ${rates.toStringAsFixed(2)}  ",
+                  style: TextStyles.font15TextPrimarySemiBold(context),
+                ),
               TextSpan(
-                text: selectedCurrencyFrom,
-                style: TextStyles.font15TextPrimarySemiBold(context),
-              ),
-              TextSpan(
-                text: data == null
-                    ? " = -- $selectedCurrencyTo"
-                    : " = ${data!.convert(1, selectedCurrencyFrom, selectedCurrencyTo).toStringAsFixed(2)} $selectedCurrencyTo",
+                text: " $selectedCurrencyTo",
                 style: TextStyles.font15TextPrimarySemiBold(context),
               ),
               TextSpan(

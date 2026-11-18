@@ -16,5 +16,8 @@
     "app-title": "Sarraf App",
     "no-route-defined": "No route defined for {}",
     "updated-just-now": "Updated just now",
-    "coming-soon":"Coming soon!"
+    "coming-soon":"Coming soon!",
+    "connection-error": "Connection Error",
+    "failed-to-load-rates": "Failed to load live exchange rates. Please check your internet connection.",
+    "retry": "Retry"
 }

@@ -17,6 +17,8 @@ class AppTheme {
       outline: AppColors.light.borderDefault,
       primary: AppColors.light.brandPrimary,
       primaryContainer: AppColors.light.brandTint,
+      error: AppColors.light.stateNegative,
+      errorContainer: AppColors.light.stateNegativeTint,
     ),
     dividerColor: AppColors.light.borderDefault,
   );
@@ -34,6 +36,8 @@ class AppTheme {
       outline: AppColors.dark.borderDefault,
       primary: AppColors.dark.brandPrimary,
       primaryContainer: AppColors.dark.brandTint,
+      error: AppColors.dark.stateNegative,
+      errorContainer: AppColors.dark.stateNegativeTint,
     ),
     dividerColor: AppColors.dark.borderDefault,
   );
