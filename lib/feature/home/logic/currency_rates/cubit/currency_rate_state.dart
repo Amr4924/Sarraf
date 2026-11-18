@@ -1,4 +1,4 @@
-import 'package:sarraf/feature/home/data/currency_rates_model.dart';
+import 'package:sarraf/feature/home/data/models/currency_rates_model.dart';
 
 class CurrencyRatesState {}
 

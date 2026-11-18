@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sarraf/feature/home/data/currencies_model.dart';
-import 'package:sarraf/feature/home/data/currency_rates_model.dart';
+import 'package:sarraf/feature/home/data/models/currencies_model.dart';
+import 'package:sarraf/feature/home/data/models/currency_rates_model.dart';
 import 'package:sarraf/feature/home/logic/operation/cubit/operation_state.dart';
 
 class OperationCubit extends Cubit<OperationState> {

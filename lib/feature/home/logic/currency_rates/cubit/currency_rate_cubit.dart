@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sarraf/feature/home/logic/cubit/currency_rate_state.dart';
-import 'package:sarraf/feature/home/services/home_services.dart';
+import 'package:sarraf/feature/home/logic/currency_rates/cubit/currency_rate_state.dart';
+import 'package:sarraf/feature/home/data/services/home_services.dart';
 
 class CurrencyRatesCubit extends Cubit<CurrencyRatesState> {
   HomeServices homeservices;

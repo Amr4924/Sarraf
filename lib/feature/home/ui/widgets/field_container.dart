@@ -5,8 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:sarraf/core/helpers/spacing.dart';
 import 'package:sarraf/core/theming/style.dart';
-import 'package:sarraf/feature/home/logic/cubit/currency_rate_cubit.dart';
-import 'package:sarraf/feature/home/logic/cubit/currency_rate_state.dart';
+import 'package:sarraf/feature/home/logic/currency_rates/cubit/currency_rate_cubit.dart';
+import 'package:sarraf/feature/home/logic/currency_rates/cubit/currency_rate_state.dart';
 import 'package:sarraf/feature/home/logic/operation/cubit/operation_cubit.dart';
 import 'package:sarraf/feature/home/logic/operation/cubit/operation_state.dart';
 import 'package:sarraf/feature/home/ui/widgets/field_form_to.dart';
@@ -28,6 +28,7 @@ class _FieldContainerState extends State<FieldContainer> {
     super.initState();
     context.read<CurrencyRatesCubit>().getCurrencyRate();
   }
+
   @override
   void dispose() {
     amount.dispose();
