@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:sarraf/core/Network/api_manager.dart';
 import 'package:sarraf/core/helpers/spacing.dart';
-import 'package:sarraf/feature/home/logic/cubit/currency_rate_cubit.dart';
+import 'package:sarraf/feature/home/logic/currency_rates/cubit/currency_rate_cubit.dart';
 import 'package:sarraf/feature/home/logic/operation/cubit/operation_cubit.dart';
 import 'package:sarraf/feature/home/services/home_services.dart';
 import 'package:sarraf/feature/home/ui/widgets/custom_home_bar.dart';
