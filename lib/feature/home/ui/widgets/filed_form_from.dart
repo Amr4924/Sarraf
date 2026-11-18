@@ -1,61 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:sarraf/feature/home/data/models/currencies_model.dart';
-import 'package:sarraf/feature/home/data/models/currency_rates_model.dart';
-import 'package:sarraf/feature/home/ui/widgets/app_field.dart';
+import 'package:sarraf/core/widgets/app_field.dart';
+import 'package:sarraf/feature/home/logic/operation/cubit/operation_cubit.dart';
 
-class FieldFormFrom extends StatefulWidget {
+class FieldFormFrom extends StatelessWidget {
   TextEditingController amount;
   String nameCurrencyFrom;
   String selectedCurrencyFrom;
   String selectedCurrencyTo;
   String symbolFrom;
-  final ValueChanged<CurrenciesModel> onCurrencyChanged;
-  final ValueChanged<double> onResultyChanged;
-  final CurrencyRatesModel? data;
-  double result;
+
   FieldFormFrom({
     super.key,
     required this.amount,
     required this.selectedCurrencyFrom,
     required this.nameCurrencyFrom,
     required this.symbolFrom,
-    required this.onCurrencyChanged,
-    required this.onResultyChanged,
     required this.selectedCurrencyTo,
-    required this.data,
-    required this.result,
+
   });
 
   @override
-  State<FieldFormFrom> createState() => _FieldFormFromState();
-}
-
-class _FieldFormFromState extends State<FieldFormFrom> {
-  @override
   Widget build(BuildContext context) {
     return AppField(
-      controller: widget.amount,
+      controller: amount,
       autofocus: false,
-      nameCurrency: widget.nameCurrencyFrom,
-      selectedCurrency: widget.selectedCurrencyFrom,
-      symbol: widget.symbolFrom,
-      onChanged: (value) {
-        final rates = widget.data;
-        final amountValue = double.tryParse(value);
-        final convertedValue = rates == null || amountValue == null
-            ? 0.0
-            : rates.convert(
-                amountValue,
-                widget.selectedCurrencyFrom,
-                widget.selectedCurrencyTo,
-              );
-        setState(() {
-          widget.result = convertedValue;
-        });
-        widget.onResultyChanged(widget.result);
-      },
+      nameCurrency: nameCurrencyFrom,
+      selectedCurrency: selectedCurrencyFrom,
+      symbol: symbolFrom,
       onTap: () {
+        final operationCubit = context.read<OperationCubit>();
         showModalBottomSheet(
           context: context,
           builder: (context) {
@@ -71,12 +47,7 @@ class _FieldFormFromState extends State<FieldFormFrom> {
                     title: Text(currencies.code),
                     subtitle: Text(currencies.nameCurrencies),
                     onTap: () {
-                      setState(() {
-                        widget.selectedCurrencyFrom = currencies.code;
-                        widget.nameCurrencyFrom = currencies.nameCurrencies;
-                        widget.symbolFrom = currencies.symbol;
-                      });
-                      widget.onCurrencyChanged(currencies);
+                      operationCubit.selectCurrencyFrom(currencies);
                       Navigator.pop(context);
                     },
                   );

@@ -2,48 +2,43 @@
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:sarraf/core/theming/style.dart';
 import 'package:sarraf/feature/home/data/models/currencies_model.dart';
-import 'package:sarraf/feature/home/ui/widgets/app_field.dart';
+import 'package:sarraf/core/widgets/app_field.dart';
+import 'package:sarraf/feature/home/logic/operation/cubit/operation_cubit.dart';
 
-class FieldFormTo extends StatefulWidget {
+class FieldFormTo extends StatelessWidget {
   String nameCurrencyTo;
   String selectedCurrencyTo;
   String symbolTo;
   double result;
-  final ValueChanged<CurrenciesModel> onCurrencyChanged;
-
   FieldFormTo({
     super.key,
     required this.nameCurrencyTo,
     required this.selectedCurrencyTo,
     required this.symbolTo,
     required this.result,
-    required this.onCurrencyChanged,
   });
 
-  @override
-  State<FieldFormTo> createState() => _FieldFormToState();
-}
-
-class _FieldFormToState extends State<FieldFormTo> {
   @override
   Widget build(BuildContext context) {
     return AppField(
       color: Theme.of(context).colorScheme.outline,
       title: "currency-to".tr(),
-      nameCurrency: widget.nameCurrencyTo,
-      selectedCurrency: widget.selectedCurrencyTo,
-      symbol: widget.symbolTo,
+      nameCurrency: nameCurrencyTo,
+      selectedCurrency: selectedCurrencyTo,
+      symbol: symbolTo,
       widget: FittedBox(
         fit: BoxFit.scaleDown,
         child: Text(
-          widget.result.toStringAsFixed(2),
+          context.watch<OperationCubit>().state.result.toStringAsFixed(2),
           style: TextStyles.font32PrimaryBold(context),
         ),
       ),
       onTap: () {
+        final operationCubit = context.read<OperationCubit>();
         showModalBottomSheet(
           context: context,
           builder: (context) {
@@ -59,12 +54,7 @@ class _FieldFormToState extends State<FieldFormTo> {
                     title: Text(currencies.code),
                     subtitle: Text(currencies.nameCurrencies),
                     onTap: () {
-                      setState(() {
-                        widget.selectedCurrencyTo = currencies.code;
-                        widget.nameCurrencyTo = currencies.nameCurrencies;
-                        widget.symbolTo = currencies.symbol;
-                      });
-                      widget.onCurrencyChanged(currencies);
+                      operationCubit.selectCurrencyTo(currencies);
                       Navigator.pop(context);
                     },
                   );
