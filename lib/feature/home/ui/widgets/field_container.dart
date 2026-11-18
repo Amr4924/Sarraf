@@ -28,6 +28,7 @@ class _FieldContainerState extends State<FieldContainer> {
     super.initState();
     context.read<CurrencyRatesCubit>().getCurrencyRate();
   }
+
   @override
   void dispose() {
     amount.dispose();
