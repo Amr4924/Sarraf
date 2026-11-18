@@ -3,9 +3,10 @@ import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:sarraf/core/constants/api_constants.dart';
 
-class ApiManager {
+class ApiGoldManagment {
   Dio dio;
-  ApiManager() : dio = Dio(BaseOptions(baseUrl: ApiConstants.baseUrl)) {
+  ApiGoldManagment()
+    : dio = Dio(BaseOptions(baseUrl: ApiConstants.goldBaseUrl)) {
     dio.interceptors.add(
       PrettyDioLogger(
         requestHeader: true,
