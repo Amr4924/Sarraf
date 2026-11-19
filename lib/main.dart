@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sarraf/core/routing/app_router.dart';
+import 'package:sarraf/feature/gold/logic/operations/cubit/operation_gold_cubit.dart';
 import 'package:sarraf/feature/settings/logic/cubit/theme_cubit.dart';
 import 'package:sarraf/sarraf_app.dart';
 
@@ -16,7 +17,10 @@ Future<void> main() async {
           'assets/translations', // <-- change the path of the translation files
       fallbackLocale: Locale('en', 'US'),
       child: MultiBlocProvider(
-        providers: [BlocProvider(create: (context) => ThemeCubit())],
+        providers: [
+          BlocProvider(create: (context) => ThemeCubit()),
+          BlocProvider(create: (context) => OperationsGoldCubit()),
+        ],
         child: SarrafApp(appRoute: AppRouter()),
       ),
     ),

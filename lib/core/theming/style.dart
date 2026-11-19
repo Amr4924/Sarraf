@@ -56,4 +56,16 @@ class TextStyles {
         fontWeight: TextWeightHelper.bold,
         color: Theme.of(context).colorScheme.onSurface,
       );
+  static TextStyle font17TextSecondrySemiBold(BuildContext context) =>
+      GoogleFonts.cairo(
+        fontSize: 17.sp,
+        fontWeight: TextWeightHelper.semiBold,
+        color: Theme.of(context).colorScheme.onSurfaceVariant,
+      );
+  static TextStyle font32TextPrimaryBold(BuildContext context) =>
+      GoogleFonts.cairo(
+        fontSize: 32.sp,
+        fontWeight: TextWeightHelper.bold,
+        color: Theme.of(context).colorScheme.onSurface,
+      );
 }

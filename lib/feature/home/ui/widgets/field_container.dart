@@ -26,7 +26,7 @@ class _FieldContainerState extends State<FieldContainer> {
   void initState() {
     amount = TextEditingController();
     super.initState();
-    context.read<CurrencyRatesCubit>().getCurrencyRate();
+    // context.read<CurrencyRatesCubit>().getCurrencyRate();
   }
 
   @override

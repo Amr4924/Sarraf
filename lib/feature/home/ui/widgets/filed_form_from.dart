@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
-import 'package:sarraf/feature/home/data/models/currencies_model.dart';
+import 'package:sarraf/core/models/currencies_model.dart';
 import 'package:sarraf/core/widgets/app_field.dart';
 import 'package:sarraf/feature/home/logic/operation/cubit/operation_cubit.dart';
 
