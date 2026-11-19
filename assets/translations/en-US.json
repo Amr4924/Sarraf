@@ -15,5 +15,17 @@
     "currency-to": "To",
     "app-title": "Sarraf App",
     "no-route-defined": "No route defined for {}",
-    "updated-just-now": "Updated just now"
+    "updated-just-now": "Updated just now",
+    "coming-soon": "Coming soon!",
+    "connection-error": "Connection Error",
+    "failed-to-load-rates": "Failed to load live exchange rates. Please check your internet connection.",
+    "retry": "Retry",
+    "gold-prices": "Gold prices",
+    "price-per-gram": "Price per gram",
+    "weight": "Weight",
+    "total-value": "Total value",
+    "pure-percent-24": "99.9% pure",
+    "pure-percent-22": "91.7% pure",
+    "pure-percent-21": "87.5% pure",
+    "pure-percent-18": "75% pure"
 }

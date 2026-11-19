@@ -1,15 +1,17 @@
-import 'package:dio/dio.dart';
-import 'dart:ui' as ui;
-import 'package:flutter/material.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
-import 'package:sarraf/core/Network/api_manager.dart';
 import 'package:sarraf/core/helpers/spacing.dart';
 import 'package:sarraf/core/theming/style.dart';
-import 'package:sarraf/feature/home/data/currencies_model.dart';
-import 'package:sarraf/feature/home/data/currency_rates_model.dart';
-import 'package:sarraf/feature/home/services/home_services.dart';
-import 'package:sarraf/feature/home/ui/widgets/app_field.dart';
+import 'package:sarraf/feature/home/logic/currency_rates/cubit/currency_rate_cubit.dart';
+import 'package:sarraf/feature/home/logic/currency_rates/cubit/currency_rate_state.dart';
+import 'package:sarraf/feature/home/logic/operation/cubit/operation_cubit.dart';
+import 'package:sarraf/feature/home/logic/operation/cubit/operation_state.dart';
+import 'package:sarraf/feature/home/ui/widgets/field_form_to.dart';
+import 'package:sarraf/feature/home/ui/widgets/filed_form_from.dart';
+import 'package:sarraf/feature/home/ui/widgets/rate_info.dart';
 
 class FieldContainer extends StatefulWidget {
   const FieldContainer({super.key});
@@ -19,231 +21,114 @@ class FieldContainer extends StatefulWidget {
 }
 
 class _FieldContainerState extends State<FieldContainer> {
-  late String nameCurrencyFrom;
-  late String selectedCurrencyFrom;
-  late String symbolFrom;
-  late TextEditingController amount;
-
-  late String nameCurrencyTo;
-  late String selectedCurrencyTo;
-  late String symbolTo;
-  late ApiManager apiManager;
-  late HomeServices homeService;
-  double result = 0.00;
-  CurrencyRatesModel? data;
-
-  Future<void> _loadData() async {
-    try {
-      final responce = await homeService.currencyRates();
-      debugPrint(responce.baseCode);
-      if (mounted) {
-        setState(() {
-          data = responce;
-        });
-      }
-    } on DioException catch (e) {
-      debugPrint(e.toString());
-    }
-  }
-
-  void convertRate() {
-    final rates = data;
-    final amountValue = double.tryParse(amount.text);
-    if (rates == null || amountValue == null) {
-      return;
-    }
-
-    setState(() {
-      result = rates.convert(
-        amountValue,
-        selectedCurrencyFrom,
-        selectedCurrencyTo,
-      );
-    });
-    debugPrint("$result");
-  }
-
   @override
   void initState() {
-    nameCurrencyFrom = currenciesList[0].nameCurrencies;
-    selectedCurrencyFrom = currenciesList[0].code;
-    symbolFrom = currenciesList[0].symbol;
-
-    nameCurrencyTo = currenciesList[1].nameCurrencies;
-    selectedCurrencyTo = currenciesList[1].code;
-    symbolTo = currenciesList[1].symbol;
-    apiManager = ApiManager();
-    homeService = HomeServices(apiManager);
-    amount = TextEditingController();
     super.initState();
-    _loadData();
-  }
-
-  @override
-  void dispose() {
-    amount.dispose();
-    super.dispose();
+    context.read<CurrencyRatesCubit>().getCurrencyRate();
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Stack(
-          children: [
-            Column(
+        BlocBuilder<OperationCubit, OperationState>(
+          builder: (context, state) {
+            return Stack(
               children: [
-                AppField(
-                  controller: amount,
-                  autofocus: false,
-                  nameCurrency: nameCurrencyFrom,
-                  selectedCurrency: selectedCurrencyFrom,
-                  symbol: symbolFrom,
-                  onTap: () {
-                    showModalBottomSheet(
-                      context: context,
-                      builder: (context) {
-                        return Container(
-                          padding: const EdgeInsets.all(16),
-                          height: 300.h,
-                          child: ListView.builder(
-                            itemCount: currenciesList.length,
-                            itemBuilder: (context, index) {
-                              CurrenciesModel currencies =
-                                  currenciesList[index];
-                              return ListTile(
-                                leading: CircleAvatar(
-                                  child: Text(currencies.symbol),
-                                ),
-                                title: Text(currencies.code),
-                                subtitle: Text(currencies.nameCurrencies),
-                                onTap: () {
-                                  setState(() {
-                                    selectedCurrencyFrom = currencies.code;
-                                    nameCurrencyFrom =
-                                        currencies.nameCurrencies;
-                                    symbolFrom = currencies.symbol;
-                                  });
-                                  Navigator.pop(context);
-                                },
-                              );
-                            },
-                          ),
-                        );
-                      },
-                    );
-                  },
+                Column(
+                  children: [
+                    FieldFormFrom(
+                      selectedCurrencyTo: state.selectTo.code,
+                      selectedCurrencyFrom: state.selectFrom.code,
+                      nameCurrencyFrom: state.selectFrom.nameCurrencies,
+                      symbolFrom: state.selectFrom.symbol,
+                    ),
+                    verticalSpacing(8),
+                    FieldFormTo(
+                      nameCurrencyTo: state.selectTo.nameCurrencies,
+                      selectedCurrencyTo: state.selectTo.code,
+                      symbolTo: state.selectTo.symbol,
+                      result: state.result,
+                    ),
+                  ],
                 ),
-                verticalSpacing(8),
-                AppField(
-                  color: Theme.of(context).colorScheme.outline,
-                  title: "currency-to".tr(),
-                  nameCurrency: nameCurrencyTo,
-                  selectedCurrency: selectedCurrencyTo,
-                  symbol: symbolTo,
-                  widget: FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: Text(
-                      result.toStringAsFixed(2),
-                      style: TextStyles.font32PrimaryBold(context),
+                Positioned(
+                  top: 0,
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: Center(
+                    child: CircleAvatar(
+                      radius: 24.r,
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      child: IconButton(
+                        onPressed: () {
+                          context.read<OperationCubit>().swapSelector();
+                        },
+                        icon: Icon(
+                          Icons.swap_vert,
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
+                      ),
                     ),
                   ),
-                  onTap: () {
-                    showModalBottomSheet(
-                      context: context,
-                      builder: (context) {
-                        return Container(
-                          padding: const EdgeInsets.all(16),
-                          height: 300.h,
-                          child: ListView.builder(
-                            itemCount: currenciesList.length,
-                            itemBuilder: (context, index) {
-                              CurrenciesModel currencies =
-                                  currenciesList[index];
-                              return ListTile(
-                                leading: CircleAvatar(
-                                  child: Text(currencies.symbol),
-                                ),
-                                title: Text(currencies.code),
-                                subtitle: Text(currencies.nameCurrencies),
-                                onTap: () {
-                                  setState(() {
-                                    selectedCurrencyTo = currencies.code;
-                                    nameCurrencyTo = currencies.nameCurrencies;
-                                    symbolTo = currencies.symbol;
-                                  });
-                                  Navigator.pop(context);
-                                },
-                              );
-                            },
-                          ),
-                        );
-                      },
-                    );
-                  },
                 ),
               ],
-            ),
-            Positioned(
-              top: 0,
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: Center(
-                child: CircleAvatar(
-                  radius: 24.r,
-                  backgroundColor: Theme.of(context).colorScheme.primary,
-                  child: IconButton(
-                    onPressed: () {
-                      convertRate();
-                    },
-                    icon: Icon(
-                      Icons.swap_vert,
-                      color: Theme.of(context).colorScheme.onPrimary,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
+            );
+          },
         ),
         verticalSpacing(16),
-        Center(
-          child: Container(
-            width: 270.w,
-            height: 38.h,
-            padding: EdgeInsets.symmetric(vertical: 4.h, horizontal: 16.w),
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primaryContainer,
-              borderRadius: BorderRadius.circular(999.r),
-            ),
-            child: RichText(
-              textDirection: ui.TextDirection.ltr,
-              textAlign: TextAlign.center,
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: "1 ",
-                    style: TextStyles.font15TextPrimarySemiBold(context),
+        BlocConsumer<CurrencyRatesCubit, CurrencyRatesState>(
+          builder: (context, state) {
+            return RateInfo(
+              selectedCurrencyTo: context
+                  .watch<OperationCubit>()
+                  .state
+                  .selectTo
+                  .code,
+              selectedCurrencyFrom: context
+                  .watch<OperationCubit>()
+                  .state
+                  .selectFrom
+                  .code,
+              isLoding: state is CurrencyRatesLoding,
+              rates: context.read<OperationCubit>().getCurrentRate(),
+            );
+          },
+          listener: (context, state) {
+            if (state is CurrencyRatesSuccess) {
+              context.read<OperationCubit>().setRates(state.currencyRate);
+            } else if (state is CurrencyRatesError) {
+              final colorScheme = Theme.of(context).colorScheme;
+              AwesomeDialog(
+                context: context,
+                dialogBackgroundColor: Theme.of(context).colorScheme.surface,
+                barrierColor: Colors.black87,
+                animType: AnimType.rightSlide,
+                customHeader: CircleAvatar(
+                  radius: 38.r,
+                  backgroundColor: colorScheme.errorContainer,
+                  child: Icon(
+                    Icons.error_outline_rounded,
+                    size: 42,
+                    color: colorScheme.error,
                   ),
-                  TextSpan(
-                    text: selectedCurrencyFrom,
-                    style: TextStyles.font15TextPrimarySemiBold(context),
-                  ),
-                  TextSpan(
-                    text: data == null
-                        ? " = -- $selectedCurrencyTo"
-                        : " = ${data!.convert(1, selectedCurrencyFrom, selectedCurrencyTo).toStringAsFixed(2)} $selectedCurrencyTo",
-                    style: TextStyles.font15TextPrimarySemiBold(context),
-                  ),
-                  TextSpan(
-                    text: "     ${"updated-just-now".tr()}",
-                    style: TextStyles.font12ScondaryRegular(context),
-                  ),
-                ],
-              ),
-            ),
-          ),
+                ),
+                title: 'connection-error'.tr(),
+                titleTextStyle: TextStyles.font20TextPrimaryBold(context),
+                desc: 'failed-to-load-rates'.tr(),
+                descTextStyle: TextStyles.font14TextSecondaryRegular(context),
+                btnOkOnPress: () {},
+                onDismissCallback: (type) {
+                  context.read<CurrencyRatesCubit>().getCurrencyRate();
+                },
+                btnOkText: "retry".tr(),
+                btnOkColor: colorScheme.primary,
+                buttonsTextStyle: TextStyles.font16TextPrimarySemiBold(context)
+                    .copyWith(color: colorScheme.onPrimary),
+              ).show();
+            }
+          },
         ),
       ],
     );

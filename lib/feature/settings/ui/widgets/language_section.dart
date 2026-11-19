@@ -50,8 +50,10 @@ class _LanguageSectionState extends State<LanguageSection> {
                   }
                 },
               ),
-
-              Divider(),
+              Divider(
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
+                height: 1,
+              ),
               LanguageOption(
                 code: "ع",
                 title: "language-arabic",
