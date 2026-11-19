@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:sarraf/core/helpers/spacing.dart';
 import 'package:sarraf/core/models/currencies_model.dart';
 import 'package:sarraf/core/theming/style.dart';
+import 'package:sarraf/feature/gold/logic/gold_ounce/cubit/gold_ounce_cubit.dart';
 import 'package:sarraf/feature/gold/logic/operations/cubit/operation_gold_cubit.dart';
 import 'package:sarraf/feature/gold/ui/widgets/calculator.dart';
 import 'package:sarraf/feature/gold/ui/widgets/gold_bar.dart';
@@ -17,6 +19,13 @@ class GoldTrackingScreen extends StatefulWidget {
 }
 
 class _GoldTrackingScreenState extends State<GoldTrackingScreen> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<GoldOunceCubit>().getGoldOunce();
+    context.read<OperationsGoldCubit>().reset();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +71,7 @@ class _GoldTrackingScreenState extends State<GoldTrackingScreen> {
                 const Calculator(),
                 verticalSpacing(14),
                 Text(
-                  "Price per gram",
+                  "price-per-gram".tr(),
                   style: TextStyles.font15TextPrimarySemiBold(context),
                 ),
                 verticalSpacing(10),

@@ -33,7 +33,10 @@ class FieldFormTo extends StatelessWidget {
       widget: FittedBox(
         fit: BoxFit.scaleDown,
         child: Text(
-          context.watch<OperationCubit>().state.result.toStringAsFixed(2),
+          NumberFormat(
+            '#,##0.00',
+            'en_US',
+          ).format(context.watch<OperationCubit>().state.result),
           style: TextStyles.font32PrimaryBold(context),
         ),
       ),

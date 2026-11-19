@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
@@ -34,12 +35,21 @@ class Calculator extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Weight", style: TextStyles.font13ScondaryMedium(context)),
+                Text(
+                  "weight".tr(),
+                  style: TextStyles.font13ScondaryMedium(context),
+                ),
                 AppTextField(
                   contentPadding: EdgeInsets.symmetric(
                     horizontal: 16.w,
                     vertical: 10.h,
                   ),
+                  onChanged: (value) {
+                    context.read<OperationsGoldCubit>().goldPriceCalculation(
+                      value,
+                      21,
+                    );
+                  },
                 ),
               ],
             ),
@@ -52,30 +62,37 @@ class Calculator extends StatelessWidget {
               borderRadius: BorderRadius.circular(18.r),
               color: Theme.of(context).colorScheme.tertiaryContainer,
             ),
-            child: BlocBuilder<OperationsGoldCubit, OperatiopnGoldState>(
+            child: BlocBuilder<OperationsGoldCubit, OperationGoldState>(
               builder: (context, state) {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Total value",
+                      "total-value".tr(),
                       style: TextStyles.font13ScondaryMedium(context),
                     ),
                     RichText(
                       text: TextSpan(
                         children: [
                           TextSpan(
-                            text: "0.0  ",
+                            text: NumberFormat('#,##0.00', 'en_US').format(
+                              context.watch<OperationsGoldCubit>().state.result,
+                            ),
                             style: TextStyles.font32TextPrimaryBold(context),
                           ),
                           TextSpan(
-                            text: state.selectCurrency.code,
+                            text: "  ${state.selectCurrency.code}",
                             style: TextStyles.font15TextPrimarySemiBold(
                               context,
                             ),
                           ),
                         ],
                       ),
+                    ),
+                    verticalSpacing(2),
+                    Text(
+                      "${state.amount} g . ${state.karat}K . ${NumberFormat('#,##0.00', 'en_US').format(context.read<OperationsGoldCubit>().getGramPriceForKarat("21"))} ${state.selectCurrency.code} / g",
+                      style: TextStyles.font13ScondaryMedium(context),
                     ),
                   ],
                 );

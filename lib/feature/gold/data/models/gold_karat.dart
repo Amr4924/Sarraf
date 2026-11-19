@@ -1,13 +1,13 @@
 class GoldKarat {
   String karat;
-  String purePercent;
+  String purePercentKey;
 
-  GoldKarat({required this.karat, required this.purePercent});
+  GoldKarat({required this.karat, required this.purePercentKey});
 }
 
 final List<GoldKarat> goldKaratList = [
-  GoldKarat(karat: "24", purePercent: "99.9% pure"),
-  GoldKarat(karat: "22", purePercent: "91.7% pure"),
-  GoldKarat(karat: "21", purePercent: "87.5% pure"),
-  GoldKarat(karat: "18", purePercent: "75% pure"),
+  GoldKarat(karat: "24", purePercentKey: "pure-percent-24"),
+  GoldKarat(karat: "22", purePercentKey: "pure-percent-22"),
+  GoldKarat(karat: "21", purePercentKey: "pure-percent-21"),
+  GoldKarat(karat: "18", purePercentKey: "pure-percent-18"),
 ];

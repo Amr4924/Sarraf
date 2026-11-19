@@ -6,7 +6,6 @@ import 'package:sarraf/core/widgets/app_field.dart';
 import 'package:sarraf/feature/home/logic/operation/cubit/operation_cubit.dart';
 
 class FieldFormFrom extends StatelessWidget {
-  TextEditingController amount;
   String nameCurrencyFrom;
   String selectedCurrencyFrom;
   String selectedCurrencyTo;
@@ -14,18 +13,15 @@ class FieldFormFrom extends StatelessWidget {
 
   FieldFormFrom({
     super.key,
-    required this.amount,
     required this.selectedCurrencyFrom,
     required this.nameCurrencyFrom,
     required this.symbolFrom,
     required this.selectedCurrencyTo,
-
   });
 
   @override
   Widget build(BuildContext context) {
     return AppField(
-      controller: amount,
       autofocus: false,
       nameCurrency: nameCurrencyFrom,
       selectedCurrency: selectedCurrencyFrom,

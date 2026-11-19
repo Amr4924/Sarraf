@@ -70,6 +70,10 @@ class OperationCubit extends Cubit<OperationState> {
     );
   }
 
+  void reset() {
+    emit(state.copyWith(result: 0.0, amount: 0.0));
+  }
+
   double _culculate({
     required double amount,
     required String fromCode,
