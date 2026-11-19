@@ -21,18 +21,10 @@ class FieldContainer extends StatefulWidget {
 }
 
 class _FieldContainerState extends State<FieldContainer> {
-  late TextEditingController amount;
   @override
   void initState() {
-    amount = TextEditingController();
     super.initState();
-    // context.read<CurrencyRatesCubit>().getCurrencyRate();
-  }
-
-  @override
-  void dispose() {
-    amount.dispose();
-    super.dispose();
+    context.read<CurrencyRatesCubit>().getCurrencyRate();
   }
 
   @override
@@ -47,7 +39,6 @@ class _FieldContainerState extends State<FieldContainer> {
                   children: [
                     FieldFormFrom(
                       selectedCurrencyTo: state.selectTo.code,
-                      amount: amount,
                       selectedCurrencyFrom: state.selectFrom.code,
                       nameCurrencyFrom: state.selectFrom.nameCurrencies,
                       symbolFrom: state.selectFrom.symbol,

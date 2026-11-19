@@ -1,11 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sarraf/core/helpers/spacing.dart';
 import 'package:sarraf/core/routing/routes.dart';
 import 'package:sarraf/core/theming/app_colors.dart';
 import 'package:sarraf/core/theming/style.dart';
+import 'package:sarraf/feature/home/logic/operation/cubit/operation_cubit.dart';
 
 class CustomHomeBar extends StatelessWidget {
   const CustomHomeBar({super.key});
@@ -43,6 +45,7 @@ class CustomHomeBar extends StatelessWidget {
               child: IconButton(
                 onPressed: () {
                   Navigator.pushNamed(context, Routes.goldTrackingScreen);
+                  context.read<OperationCubit>().reset();
                 },
                 icon: SvgPicture.asset(
                   "assets/svgs/gold_icon.svg",
@@ -60,6 +63,7 @@ class CustomHomeBar extends StatelessWidget {
               child: IconButton(
                 onPressed: () {
                   Navigator.pushNamed(context, Routes.settingsScreen);
+                  context.read<OperationCubit>().reset();
                 },
                 icon: Icon(
                   Icons.settings,

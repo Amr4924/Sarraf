@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:sarraf/core/helpers/spacing.dart';
 import 'package:sarraf/core/theming/style.dart';
 import 'package:sarraf/feature/gold/logic/operations/cubit/operation_gold_cubit.dart';
@@ -12,7 +13,7 @@ class GoldBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<OperationsGoldCubit, OperatiopnGoldState>(
+    return BlocBuilder<OperationsGoldCubit, OperationGoldState>(
       builder: (context, state) {
         return Row(
           children: [
@@ -30,7 +31,10 @@ class GoldBar extends StatelessWidget {
               ),
             ),
             horizontalSpacing(12),
-            Text("Gold prices", style: TextStyles.font24PrimaryBold(context)),
+            Text(
+              "gold-prices".tr(),
+              style: TextStyles.font24PrimaryBold(context),
+            ),
             horizontalSpacing(12),
             const Spacer(),
             GestureDetector(
