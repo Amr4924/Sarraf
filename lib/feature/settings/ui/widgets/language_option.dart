@@ -1,5 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:sarraf/core/theming/style.dart';
 
 class LanguageOption extends StatelessWidget {

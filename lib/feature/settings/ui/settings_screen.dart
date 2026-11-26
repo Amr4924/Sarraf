@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:sarraf/core/helpers/spacing.dart';
 import 'package:sarraf/core/theming/style.dart';
@@ -33,7 +33,7 @@ class SettingsScreen extends StatelessWidget {
                         const LanguageSection(),
                         const Spacer(),
                         Text(
-                          "Sarraf · Version 1.0.0",
+                          "Sarraf · Version 2.0.0",
                           style: TextStyles.font12ScondaryRegular(context),
                         ),
                       ],
