@@ -1,5 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sarraf/core/Network/ap_currencyi_rate_manager.dart';
 import 'package:sarraf/core/Network/api_gold_managment.dart';
@@ -15,13 +15,15 @@ import 'package:sarraf/sarraf_app.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await EasyLocalization.ensureInitialized();
+  await EasyLocalization.ensureInitialized(
+    assetLoader: RootBundleAssetLoader(
+      path: 'assets/translations',
+      supportedLocales: [Locale('en', 'US'), Locale('ar', 'EG')],
+    ),
+  );
 
   runApp(
     EasyLocalization(
-      supportedLocales: [Locale('en', 'US'), Locale('ar', 'EG')],
-      path:
-          'assets/translations', // <-- change the path of the translation files
       fallbackLocale: Locale('en', 'US'),
       child: MultiBlocProvider(
         providers: [
