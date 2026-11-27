@@ -32,7 +32,7 @@ class SarrafApp extends StatelessWidget {
             darkTheme: AppTheme.darkTheme,
             theme: AppTheme.lightTheme,
             themeMode: state.themeMode,
-            initialRoute: Routes.homeScreen,
+            initialRoute: Routes.onboardingScreen,
             onGenerateRoute: appRoute.generateRoute,
           );
         },
