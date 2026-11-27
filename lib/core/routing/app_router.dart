@@ -3,11 +3,16 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:sarraf/core/routing/routes.dart';
 import 'package:sarraf/feature/gold/ui/gold_screen.dart';
 import 'package:sarraf/feature/home/ui/home_screen.dart';
+import 'package:sarraf/feature/onboarding/ui/onboarding_screen.dart';
 import 'package:sarraf/feature/settings/ui/settings_screen.dart';
 
 class AppRouter {
   Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case Routes.onboardingScreen:
+        return MaterialPageRoute(
+          builder: (context) => const OnboardingScreen(),
+        );
       case Routes.homeScreen:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case Routes.settingsScreen:

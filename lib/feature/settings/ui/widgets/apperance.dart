@@ -6,7 +6,7 @@ import 'package:sarraf/core/helpers/spacing.dart';
 import 'package:sarraf/core/theming/style.dart';
 import 'package:sarraf/feature/settings/logic/cubit/theme_cubit.dart';
 import 'package:sarraf/feature/settings/logic/cubit/theme_state.dart';
-import 'package:sarraf/feature/settings/ui/widgets/thme_option.dart';
+import 'package:sarraf/core/widgets/app_thme_option.dart';
 
 class Apepearance extends StatefulWidget {
   const Apepearance({super.key});
@@ -46,11 +46,7 @@ class _ApepearanceState extends State<Apepearance> {
                     icon: Icons.wb_sunny_outlined,
                     label: "theme-light".tr(),
                     selected: isLight,
-                    onChanged: (value) {
-                      if (value == true) {
-                        themeCubit.toggleTheme(false);
-                      }
-                    },
+                    onTap: () {},
                   ),
                 ),
                 Expanded(
@@ -59,11 +55,16 @@ class _ApepearanceState extends State<Apepearance> {
                     icon: Icons.dark_mode_outlined,
                     label: "theme-dark".tr(),
                     selected: isDark,
-                    onChanged: (value) {
-                      if (value == true) {
-                        themeCubit.toggleTheme(true);
-                      }
-                    },
+                    onTap: () {},
+                  ),
+                ),
+                Expanded(
+                  child: ThemeOption(
+                    assetPath: "assets/svgs/System.svg",
+                    icon: Icons.dark_mode_outlined,
+                    label: "theme-dark".tr(),
+                    selected: isDark,
+                    onTap: () {},
                   ),
                 ),
               ],

@@ -68,4 +68,10 @@ class TextStyles {
         fontWeight: TextWeightHelper.bold,
         color: Theme.of(context).colorScheme.onSurface,
       );
+  static TextStyle font15TextSecondryReglar(BuildContext context) =>
+      GoogleFonts.cairo(
+        fontSize: 15.sp,
+        fontWeight: TextWeightHelper.regular,
+        color: Theme.of(context).colorScheme.onSurfaceVariant,
+      );
 }
